@@ -4,13 +4,17 @@
     <vendor email="cyriltobler.dev@gmail.com" url="https://github.com/cyriltobler/format-on-save">Cyril Tobler</vendor>
 
     <description>Format on Save automatically reformats your code whenever you save a file, with zero manual steps.
-        Unlike IntelliJ’s built-in setting, it works globally across all projects, including new or freshly cloned ones, without requiring per-project configuration.
-        Enable it once and enjoy consistent, clean code everywhere.</description>
+        Unlike IntelliJ’s built-in setting, it works globally across all projects, including new or freshly cloned ones,
+        without requiring per-project configuration.
+        Enable it once and enjoy consistent, clean code everywhere.
+    </description>
     <change-notes>Initial commit.</change-notes>
 
     <depends>com.intellij.modules.platform</depends>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <fileDocumentManagerListener implementation="actions.FileSaveListener"/>
-    </extensions>
+    <projectListeners>
+        <listener
+                class="actions.FileSaveListener"
+                topic="com.intellij.openapi.fileEditor.FileDocumentManagerListener"/>
+    </projectListeners>
 </idea-plugin>
